@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import ContactContext from "../../context/contact/contactContext";
-import { CLEAR_CURRENT } from "../../context/types";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
 
-  const { addContact, clearCurrent, updateContact, current } = contactContext;
+  const { addContact, updateContact, clearCurrent, current } = contactContext;
 
   useEffect(() => {
     if (current !== null) {
@@ -35,19 +33,12 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-
     if (current === null) {
       addContact(contact);
     } else {
       updateContact(contact);
     }
-
-    setContact({
-      name: "",
-      email: "",
-      phone: "",
-      type: "personal"
-    });
+    clearAll();
   };
 
   const clearAll = () => {
@@ -85,18 +76,18 @@ const ContactForm = () => {
         type="radio"
         name="type"
         value="personal"
-        onChange={onChange}
         checked={type === "personal"}
-      />
+        onChange={onChange}
+      />{" "}
       Personal{" "}
       <input
         type="radio"
         name="type"
         value="professional"
-        onChange={onChange}
         checked={type === "professional"}
-      />
-      Professional{" "}
+        onChange={onChange}
+      />{" "}
+      Professional
       <div>
         <input
           type="submit"
