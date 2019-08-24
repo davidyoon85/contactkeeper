@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import ContactContext from "./contactContext";
-import contactReducer from "./contactReducer";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import ContactContext from './contactContext';
+import contactReducer from './contactReducer';
 import {
   GET_CONTACTS,
   ADD_CONTACT,
@@ -13,7 +13,7 @@ import {
   CLEAR_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR
-} from "../types";
+} from '../types';
 
 const ContactState = props => {
   const initialState = {
@@ -28,7 +28,7 @@ const ContactState = props => {
   // Get Contacts
   const getContacts = async () => {
     try {
-      const res = await axios.get("/api/contacts");
+      const res = await axios.get('/api/contacts');
 
       dispatch({
         type: GET_CONTACTS,
@@ -46,12 +46,12 @@ const ContactState = props => {
   const addContact = async contact => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
 
     try {
-      const res = await axios.post("/api/contacts", contact, config);
+      const res = await axios.post('/api/contacts', contact, config);
 
       dispatch({
         type: ADD_CONTACT,
@@ -86,7 +86,7 @@ const ContactState = props => {
   const updateContact = async contact => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
 
